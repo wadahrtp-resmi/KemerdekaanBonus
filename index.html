@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mystery Gift</title>
+
+<!-- ICON -->
+<link rel="icon" href="https://i.ibb.co/35kzSv2C/image.png">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url('https://i.ibb.co/B2cBLhwT/image.png')
+    center/cover no-repeat;
+
+    color:white;
+}
+
+/* CONTAINER */
+.container{
+
+    width:95%;
+    max-width:420px;
+
+    background:#050505;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 0 10px #00ffff,
+    0 0 30px #00ffff;
+
+}
+
+/* TITLE */
+h1{
+
+h1{
+
+    color:#00ffff;
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    text-shadow:
+    0 0 10px #00ffff,
+    0 0 25px #00ffff;
+
+}
+
+}
+
+/* DESC */
+.desc{
+
+    color:#ddd;
+
+    font-size:15px;
+
+    margin-bottom:20px;
+
+}
+
+/* INPUT */
+input{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    background:#111;
+
+    color:white;
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+}
+
+/* BUTTON */
+.btn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    background:#050505;
+
+    color:#00ffff;
+
+    border:2px solid #00ffff;
+
+    transition:.3s;
+
+    box-shadow:
+    0 0 10px #00ffff,
+    0 0 25px #00ffff;
+
+}
+
+.btn:hover{
+
+    background:#00ffff;
+    color:black;
+
+}
+
+/* TEXT KLIK HADIAH */
+.klik-hadiah{
+
+    display:none;
+
+    margin-top:30px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#00ffff;
+
+    text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff;
+
+    animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.3;
+    }
+
+    100%{
+        opacity:1;
+    }
+
+}
+
+/* BOX HADIAH */
+.box{
+
+    width:220px;
+    height:220px;
+
+    margin:25px auto 10px;
+
+    background:
+    url('https://i.ibb.co/4nFzNLDF/image-removebg-preview-8.png')
+    center center/contain no-repeat;
+
+    display:none;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+    filter:
+    drop-shadow(0 0 15px cyan)
+    drop-shadow(0 0 30px cyan);
+
+    animation:
+    float 2s infinite ease-in-out,
+    glow 1.5s infinite alternate;
+
+}
+
+/* FLOAT */
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* GLOW */
+@keyframes glow{
+
+    from{
+
+        filter:
+        drop-shadow(0 0 10px cyan)
+        drop-shadow(0 0 25px cyan);
+
+    }
+
+    to{
+
+        filter:
+        drop-shadow(0 0 20px #00ffff)
+        drop-shadow(0 0 45px #00ffff);
+
+    }
+
+}
+
+/* HOVER */
+.box:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* SHAKE */
+.shake{
+    animation:shake .5s;
+}
+
+@keyframes shake{
+
+    25%{
+        transform:rotate(10deg);
+    }
+
+    50%{
+        transform:rotate(-10deg);
+    }
+
+    75%{
+        transform:rotate(5deg);
+    }
+
+}
+
+/* POPUP */
+.popup{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.92);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.5s;
+
+}
+
+.popup.show{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+/* CARD */
+.popup-card{
+
+    width:90%;
+    max-width:350px;
+
+    background:#050505;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border:2px solid gold;
+
+    box-shadow:
+    0 0 15px gold,
+    0 0 40px gold;
+
+    transform:scale(.7);
+
+    transition:.4s;
+
+}
+
+.popup.show .popup-card{
+
+    transform:scale(1);
+
+}
+
+/* HADIAH */
+.hadiah{
+
+    font-size:40px;
+
+    margin:20px 0;
+
+    color:gold;
+
+    text-shadow:
+    0 0 15px gold,
+    0 0 30px gold;
+
+}
+
+/* NOTIF */
+.notif{
+
+    position:fixed;
+
+    bottom:20px;
+    left:20px;
+
+    background:white;
+
+    color:black;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    font-size:13px;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:.5s;
+
+}
+
+.notif.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* MOBILE */
+@media(max-width:480px){
+
+    h1{
+        font-size:28px;
+    }
+
+    .box{
+        width:180px;
+        height:180px;
+    }
+
+    .hadiah{
+        font-size:30px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎁 MYSTERY GIFT 🎁</h1>
+
+<div class="desc">
+Masukkan kode untuk membuka hadiah spesial hari ini
+</div>
+
+<input type="text" id="kode" placeholder="Masukkan kode">
+
+<button class="btn" onclick="cekKode()">
+Buka Akses
+</button>
+
+<!-- TEXT -->
+<div class="klik-hadiah" id="klikHadiah">
+👇 Klik Gambar Hadiah 👇
+</div>
+
+<!-- BOX -->
+<div class="box" id="box" onclick="openBox()"></div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+
+<div class="popup-card">
+
+<h2>🎉 SELAMAT 🎉</h2>
+
+<div class="hadiah" id="hadiahText">
+Rp 100.000
+</div>
+
+<p>Kamu berhasil mendapatkan hadiah spesial</p>
+
+<button class="btn" onclick="claimHadiah()">
+Klaim Sekarang
+</button>
+
+</div>
+
+</div>
+
+<!-- NOTIF -->
+<div class="notif" id="notif"></div>
+
+<script>
+
+/* VALID CODE */
+let validKode = [
+
+    "SOEKARNO",
+    "PRABOWO",
+    "INDONESIA",
+    "MERDEKA",
+    "RAKYAT"
+
+];
+
+/* CEK KODE */
+function cekKode(){
+
+    let input =
+    document.getElementById("kode").value;
+
+    let box =
+    document.getElementById("box");
+
+    if(validKode.includes(input)){
+
+        box.style.display = "block";
+
+        document.getElementById("klikHadiah")
+        .style.display = "block";
+
+        alert("Kode berhasil dibuka 🎉");
+
+    }else{
+
+        alert("Kode salah!");
+
+    }
+
+}
+
+/* OPEN BOX */
+function openBox(){
+
+    let box =
+    document.getElementById("box");
+
+    box.classList.remove("shake");
+
+    void box.offsetWidth;
+
+    box.classList.add("shake");
+
+    document.getElementById("klikHadiah")
+    .style.display = "none";
+
+    let hadiah = [
+
+        "Rp 25.000",
+        "Rp 50.000",
+        "Rp 100.000",
+        "Rp 150.000",
+        "Rp 500.000",
+        "Rp 1.000.000"
+
+    ];
+
+    let randomHadiah =
+    hadiah[Math.floor(Math.random()*hadiah.length)];
+
+    setTimeout(()=>{
+
+        document.getElementById("popup")
+        .classList.add("show");
+
+        document.getElementById("hadiahText")
+        .innerHTML = randomHadiah;
+
+        localStorage.setItem(
+            "sudahMain",
+            "yes"
+        );
+
+    },1000);
+
+}
+
+/* CLAIM */
+function claimHadiah(){
+
+    window.location.href =
+    "http://wadahbesar.com/";
+
+}
+
+/* NOTIF */
+let nama = [
+
+    "AndiWin",
+    "SultanJP",
+    "BudiMax",
+    "Rina88",
+    "DikaJP",
+    "LuckyPlayer",
+    "FajarWin",
+    "HokiBanget"
+
+];
+
+let notifHadiah = [
+
+    "mendapat Rp 250.000",
+    "mendapat Rp 500.000",
+    "mendapat Rp 1,000.000",
+    "mendapat Spin Gratis",
+    "mendapat Rp 100,000",
+
+];
+
+function showNotif(){
+
+    let notif =
+    document.getElementById("notif");
+
+    let randomNama =
+    nama[Math.floor(Math.random()*nama.length)];
+
+    let randomHadiah =
+    notifHadiah[Math.floor(Math.random()*notifHadiah.length)];
+
+    notif.innerHTML =
+    "🎉 "+randomNama+" "+randomHadiah;
+
+    notif.classList.add("show");
+
+    setTimeout(()=>{
+
+        notif.classList.remove("show");
+
+    },3000);
+
+}
+
+setInterval(showNotif,4000);
+
+/* CEK LOCAL STORAGE */
+window.onload = function(){
+
+    let sudahMain =
+    localStorage.getItem("sudahMain");
+
+    if(sudahMain){
+
+        document.querySelector(".container")
+        .innerHTML = `
+
+        <h1>⚠️ SUDAH KLAIM</h1>
+
+        <div class="desc">
+        Kamu sudah mengambil hadiah hari ini
+        </div>
+
+        <button class="btn"
+        onclick="window.location.reload()">
+        Refresh
+        </button>
+
+        `;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
